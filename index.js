@@ -21,28 +21,28 @@ const README_FILE_PATH = "./README.md";
 async function updateReadme(data) {
   const { karma, completed_count, days_items, goals, week_items } = data;
 
-  const karmaPoint = [`🏆  **${Humanize.intComma(karma)}** Karma Points`];
+  const karmaPoint = [`-  **${Humanize.intComma(karma)}** Karma Points`];
   todoist.push(karmaPoint);
 
-  const dailyGoal = [
-    `🌸  Completed **${days_items[0].total_completed.toString()}** tasks today`,
-  ];
-  todoist.push(dailyGoal);
+  // const dailyGoal = [
+  //   `🌸  Completed **${days_items[0].total_completed.toString()}** tasks today`,
+  // ];
+  // todoist.push(dailyGoal);
 
   if (PREMIUM == "true") {
     const weekItems = [
-      `🗓  Completed **${week_items[0].total_completed.toString()}** tasks this week`,
+      `-  Completed **${week_items[0].total_completed.toString()}** tasks this week`,
     ];
     todoist.push(weekItems);
   }
 
   const totalTasks = [
-    `✅  Completed **${Humanize.intComma(completed_count)}** tasks so far`,
+    `-  Completed **${Humanize.intComma(completed_count)}** tasks so far`,
   ];
   todoist.push(totalTasks);
 
   const longestStreak = [
-    `⏳  Longest streak is **${goals.max_daily_streak.count}** days`,
+    `-  Longest streak is **${goals.max_daily_streak.count}** days`,
   ];
   todoist.push(longestStreak);
 
